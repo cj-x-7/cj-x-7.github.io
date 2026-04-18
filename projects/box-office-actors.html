@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Box Office Performance by Actor | CJ Portfolio</title>
+    <meta
+      name="description"
+      content="Interactive demo case study showing actor-linked box office performance, ROI, and strategy takeaways."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="../index.html">CJ</a>
+        <nav class="site-nav">
+          <a href="../index.html#work">Projects</a>
+          <a href="#dashboard">Dashboard</a>
+          <a href="#recommendation">Recommendation</a>
+        </nav>
+      </header>
+
+      <main class="project-layout">
+        <section class="project-hero">
+          <div>
+            <p class="eyebrow">Featured Case Study</p>
+            <h1>Box Office Performance by Actor</h1>
+            <p class="hero-text">
+              Interactive starter project showing how an analytics portfolio can
+              move from descriptive views to a strategy recommendation. This
+              demo uses sample data structure only, so you can replace it with a
+              real cleaned dataset later.
+            </p>
+          </div>
+          <div class="panel">
+            <p class="mini-label">Case Study Frame</p>
+            <ul class="project-meta">
+              <li>Question: Which actor profiles are driving gross vs ROI?</li>
+              <li>Audience: Studio strategy or content finance teams</li>
+              <li>Output: Filterable dashboard plus recommendation</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-heading compact">
+            <p class="eyebrow">Project Structure</p>
+            <h2>What this page demonstrates.</h2>
+          </div>
+          <div class="approach-grid">
+            <article class="panel">
+              <h3>The question</h3>
+              <p>
+                Evaluate whether certain actor profiles are associated with
+                stronger top-line performance, more stable returns, or better
+                outcomes in specific budget bands.
+              </p>
+            </article>
+            <article class="panel">
+              <h3>The analysis</h3>
+              <p>
+                Compare budget, worldwide gross, ROI, year trend, and actor
+                concentration. Apply filters to simulate how decision-makers
+                would narrow the portfolio.
+              </p>
+            </article>
+            <article class="panel">
+              <h3>The strategy take</h3>
+              <p>
+                Translate the pattern into a recommendation on casting premium,
+                franchise dependency, or mid-budget slate design.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="dashboard">
+          <div class="section-heading compact">
+            <p class="eyebrow">Interactive Dashboard</p>
+            <h2>Filter by actor, genre, studio, and year.</h2>
+            <p class="section-copy">
+              Replace the sample data file later and the page will continue to
+              work as long as the field names stay the same.
+            </p>
+          </div>
+
+          <div class="filter-bar panel">
+            <label>
+              Actor
+              <select id="actorFilter"></select>
+            </label>
+            <label>
+              Genre
+              <select id="genreFilter"></select>
+            </label>
+            <label>
+              Studio
+              <select id="studioFilter"></select>
+            </label>
+            <label>
+              Min Year
+              <select id="yearFilter"></select>
+            </label>
+            <button class="button button-secondary" id="resetFilters" type="button">
+              Reset
+            </button>
+          </div>
+
+          <div class="kpi-grid" id="kpis"></div>
+
+          <div class="dashboard-grid">
+            <article class="panel chart-panel chart-panel-large">
+              <div class="chart-header">
+                <div>
+                  <h3>Budget vs Worldwide Gross</h3>
+                  <p class="chart-note">
+                    Each point is one film. Color shows ROI tier.
+                  </p>
+                </div>
+              </div>
+              <div id="scatterChart" class="svg-chart"></div>
+            </article>
+
+            <article class="panel chart-panel">
+              <h3>Average Worldwide Gross by Actor</h3>
+              <div id="actorBars" class="bars-chart"></div>
+            </article>
+
+            <article class="panel chart-panel">
+              <h3>Worldwide Gross Trend</h3>
+              <div id="trendChart" class="svg-chart"></div>
+            </article>
+          </div>
+
+          <article class="panel table-panel">
+            <div class="chart-header">
+              <div>
+                <h3>Film Table</h3>
+                <p class="chart-note">
+                  Sample records for demo purposes only.
+                </p>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Actor</th>
+                    <th>Year</th>
+                    <th>Genre</th>
+                    <th>Budget</th>
+                    <th>Worldwide</th>
+                    <th>ROI</th>
+                  </tr>
+                </thead>
+                <tbody id="filmTableBody"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section class="section split-section" id="recommendation">
+          <div class="section-heading compact">
+            <p class="eyebrow">Recommendation</p>
+            <h2>How to narrate the findings like a strategy memo.</h2>
+          </div>
+          <div class="recommendation-grid">
+            <article class="panel">
+              <h3>Key insights</h3>
+              <ul id="insightList" class="insight-list"></ul>
+            </article>
+            <article class="panel">
+              <h3>Strategic takeaway</h3>
+              <p id="strategySummary">
+                Use this space for your recommendation once you replace the demo
+                data with a sourced dataset.
+              </p>
+              <p class="chart-note">
+                Strong portfolio pages end with a recommendation, caveat, and
+                next analytical step.
+              </p>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>
+          Demo dataset only. Update contact info, project text, and data source
+          notes before publishing publicly.
+        </p>
+      </footer>
+    </div>
+    <script src="../data/box-office.js"></script>
+    <script src="../scripts/box-office.js"></script>
+  </body>
+</html>
